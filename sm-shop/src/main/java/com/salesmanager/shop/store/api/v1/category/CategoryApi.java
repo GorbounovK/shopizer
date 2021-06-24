@@ -10,6 +10,7 @@ import java.util.stream.Stream;
 import javax.inject.Inject;
 import javax.validation.Valid;
 
+import org.apache.poi.sl.usermodel.Notes;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -45,8 +46,11 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.SwaggerDefinition;
 import io.swagger.annotations.Tag;
+import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import springfox.documentation.annotations.ApiIgnore;
 
+@Slf4j
 @RestController
 @RequestMapping(value = "/api/v1")
 @Api(tags = { "Category management resource (Category Management Api)" })
@@ -68,7 +72,8 @@ public class CategoryApi {
 			@ApiResponse(code = 200, message = "List of category found", response = ReadableCategory.class) })
 	@ApiImplicitParams({ @ApiImplicitParam(name = "store", dataType = "string", defaultValue = "DEFAULT"),
 			@ApiImplicitParam(name = "lang", dataType = "string", defaultValue = "en") })
-	public ReadableCategory get(@PathVariable(name = "id") Long categoryId, @ApiIgnore MerchantStore merchantStore,
+	public ReadableCategory get(@PathVariable(name = "id") Long categoryId, 
+			@ApiIgnore MerchantStore merchantStore,
 			@ApiIgnore Language language) {
 		ReadableCategory category = categoryFacade.getById(merchantStore, categoryId, language);
 		return category;
@@ -90,6 +95,33 @@ public class CategoryApi {
 		return category;
 	}
 
+	/**
+	 * @author Gorbounov Konstantin (gorbounov.k@gmail.com)
+	 * 
+	 * @param code
+	 * @param merchantStore
+	 * @param language
+	 * @return ReadableCategory
+	 * @throws Exception
+	 */
+	@GetMapping(value = "/category/code/{code}")
+	@ApiOperation(httpMethod = "GET", value = "Get category by Code", notes = "Category")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Category", response = ReadableCategory.class) })
+	@ApiImplicitParams({
+		@ApiImplicitParam(name = "store", dataType = "string", defaultValue = "DEFAULT"),
+		@ApiImplicitParam(name = "lang", dataType = "string", defaultValue = "en")
+	})
+	public ReadableCategory getByCode(
+			@PathVariable(name = "code") String code,
+			@ApiIgnore MerchantStore merchantStore,
+			@ApiIgnore Language language) throws Exception {
+		log.info("getByCode. code="+code);
+		ReadableCategory category = categoryFacade.getByCode(merchantStore, code, language);
+		return category;
+	}
+	
+	
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping(value = { "/private/category/unique" }, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiImplicitParams({ @ApiImplicitParam(name = "store", dataType = "string", defaultValue = "DEFAULT"),

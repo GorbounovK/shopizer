@@ -43,8 +43,12 @@ import com.salesmanager.shop.store.api.exception.OperationNotAllowedException;
 import com.salesmanager.shop.store.api.exception.ResourceNotFoundException;
 import com.salesmanager.shop.store.api.exception.ServiceRuntimeException;
 import com.salesmanager.shop.store.api.exception.UnauthorizedException;
+import com.salesmanager.shop.store.api.v1.category.CategoryApi;
 import com.salesmanager.shop.store.controller.category.facade.CategoryFacade;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service(value = "categoryFacade")
 public class CategoryFacadeImpl implements CategoryFacade {
 
@@ -319,12 +323,14 @@ public class CategoryFacadeImpl implements CategoryFacade {
 
 	@Override
 	public ReadableCategory getByCode(MerchantStore store, String code, Language language) throws Exception {
-
+		log.info("getByCode. code="+code);
+		log.info("getByCode. store="+store);
 		Validate.notNull(code, "category code must not be null");
 		ReadableCategoryPopulator categoryPopulator = new ReadableCategoryPopulator();
 		ReadableCategory readableCategory = new ReadableCategory();
 
 		Category category = categoryService.getByCode(store, code);
+		log.info("getByCode. category="+category);
 		categoryPopulator.populate(category, readableCategory, store, language);
 
 		return readableCategory;

@@ -191,3 +191,133 @@ org.h2.jdbc.JdbcSQLFeatureNotSupportedException: Feature not supported: "getFunc
 	at org.jkiss.dbeaver.ui.navigator.actions.NavigatorHandlerRefresh$1.run(NavigatorHandlerRefresh.java:154)
 	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:102)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2021-06-20 18:13:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Схема "SALEMANAGER" не найдена
+Schema "SALEMANAGER" not found; SQL statement:
+UPDATE SALEMANAGER.MERCHANT_STORE SET STORE_STATE_PROV = 'UA' [90079-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:576)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.command.Parser.getSchema(Parser.java:1194)
+	at org.h2.command.Parser.getSchema(Parser.java:1200)
+	at org.h2.command.Parser.readTableOrView(Parser.java:7604)
+	at org.h2.command.Parser.readTableOrView(Parser.java:7599)
+	at org.h2.command.Parser.readSimpleTableFilter(Parser.java:1350)
+	at org.h2.command.Parser.parseUpdate(Parser.java:1288)
+	at org.h2.command.Parser.parsePrepared(Parser.java:1005)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at net.sourceforge.squirrel_sql.client.session.StatementWrapper.execute(StatementWrapper.java:168)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.processQuery(SQLExecuterTask.java:361)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.runDirect(SQLExecuterTask.java:214)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.run(SQLExecuterTask.java:137)
+	at net.sourceforge.squirrel_sql.fw.util.TaskExecuter.run(TaskExecuter.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+2021-06-20 18:13:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "MERCHANT_STORE" не найдена
+Table "MERCHANT_STORE" not found; SQL statement:
+UPDATE MERCHANT_STORE SET STORE_STATE_PROV = 'UA' [42102-200]
+2021-06-20 18:14:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "MERCHANT_STORE" не найдена
+Table "MERCHANT_STORE" not found; SQL statement:
+UPDATE MERCHANT_STORE SET STORE_STATE_PROV = 'UA' [42102-200]
+2021-06-20 18:15:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "MERCHANT_STORE" не найдена
+Table "MERCHANT_STORE" not found; SQL statement:
+UPDATE MERCHANT_STORE SET STORE_STATE_PROV='UA' [42102-200]
+2021-06-20 18:32:35 database: close
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.EOFException"; "/home/gk/eclipse-workspace/shopizer/shopizer/sm-shop/SALESMANAGER.h2.db"
+IO Exception: "java.io.EOFException"; "/home/gk/eclipse-workspace/shopizer/shopizer/sm-shop/SALESMANAGER.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.readFully(FileStore.java:284)
+	at org.h2.pagestore.PageStore.readPage(PageStore.java:1320)
+	at org.h2.pagestore.PageStore.getPage(PageStore.java:744)
+	at org.h2.pagestore.PageStreamTrunk$Iterator.next(PageStreamTrunk.java:252)
+	at org.h2.pagestore.PageLog.free(PageLog.java:216)
+	at org.h2.pagestore.PageStore.compact(PageStore.java:494)
+	at org.h2.engine.Database.closeOpenFilesAndUnlock(Database.java:1517)
+	at org.h2.engine.Database.closeImpl(Database.java:1454)
+	at org.h2.engine.Database.close(Database.java:1373)
+	at org.h2.engine.Database.removeSession(Database.java:1307)
+	at org.h2.engine.Session.close(Session.java:963)
+	at org.h2.jdbc.JdbcConnection.close(JdbcConnection.java:453)
+	at net.sourceforge.squirrel_sql.fw.sql.SQLConnection._closeIntern(SQLConnection.java:168)
+	at net.sourceforge.squirrel_sql.fw.sql.SQLConnection.lambda$close$0(SQLConnection.java:120)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.EOFException"; "/home/gk/eclipse-workspace/shopizer/shopizer/sm-shop/SALESMANAGER.h2.db"
+IO Exception: "java.io.EOFException"; "/home/gk/eclipse-workspace/shopizer/shopizer/sm-shop/SALESMANAGER.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 21 more
+Caused by: java.io.EOFException
+	at org.h2.store.fs.FileUtils.readFully(FileUtils.java:361)
+	at org.h2.store.FileStore.readFully(FileStore.java:282)
+	... 18 more
+2021-06-21 11:10:27 database: close
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.EOFException"; "/home/gk/eclipse-workspace/shopizer/shopizer/sm-shop/SALESMANAGER.h2.db"
+IO Exception: "java.io.EOFException"; "/home/gk/eclipse-workspace/shopizer/shopizer/sm-shop/SALESMANAGER.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.readFully(FileStore.java:284)
+	at org.h2.pagestore.PageStore.readPage(PageStore.java:1320)
+	at org.h2.pagestore.PageStore.getPage(PageStore.java:744)
+	at org.h2.pagestore.PageStreamTrunk$Iterator.next(PageStreamTrunk.java:252)
+	at org.h2.pagestore.PageLog.free(PageLog.java:216)
+	at org.h2.pagestore.PageStore.compact(PageStore.java:494)
+	at org.h2.engine.Database.closeOpenFilesAndUnlock(Database.java:1517)
+	at org.h2.engine.Database.closeImpl(Database.java:1454)
+	at org.h2.engine.Database.close(Database.java:1373)
+	at org.h2.engine.Database.removeSession(Database.java:1307)
+	at org.h2.engine.Session.close(Session.java:963)
+	at org.h2.jdbc.JdbcConnection.close(JdbcConnection.java:453)
+	at net.sourceforge.squirrel_sql.fw.sql.SQLConnection._closeIntern(SQLConnection.java:168)
+	at net.sourceforge.squirrel_sql.fw.sql.SQLConnection.lambda$close$0(SQLConnection.java:120)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.EOFException"; "/home/gk/eclipse-workspace/shopizer/shopizer/sm-shop/SALESMANAGER.h2.db"
+IO Exception: "java.io.EOFException"; "/home/gk/eclipse-workspace/shopizer/shopizer/sm-shop/SALESMANAGER.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 21 more
+Caused by: java.io.EOFException
+	at org.h2.store.fs.FileUtils.readFully(FileUtils.java:361)
+	at org.h2.store.FileStore.readFully(FileStore.java:282)
+	... 18 more
+2021-06-22 16:36:30 database: close
+org.h2.message.DbException: IO Exception: "java.io.EOFException"; "/home/gk/eclipse-workspace/shopizer/shopizer/sm-shop/SALESMANAGER.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.readFully(FileStore.java:284)
+	at org.h2.pagestore.PageStore.readPage(PageStore.java:1320)
+	at org.h2.pagestore.PageStore.getPage(PageStore.java:744)
+	at org.h2.pagestore.PageStreamTrunk$Iterator.next(PageStreamTrunk.java:252)
+	at org.h2.pagestore.PageLog.free(PageLog.java:216)
+	at org.h2.pagestore.PageStore.compact(PageStore.java:494)
+	at org.h2.engine.Database.closeOpenFilesAndUnlock(Database.java:1517)
+	at org.h2.engine.Database.closeImpl(Database.java:1454)
+	at org.h2.engine.Database.close(Database.java:1373)
+	at org.h2.engine.OnExitDatabaseCloser.onShutdown(OnExitDatabaseCloser.java:85)
+	at org.h2.engine.OnExitDatabaseCloser.run(OnExitDatabaseCloser.java:114)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: IO Exception: "java.io.EOFException"; "/home/gk/eclipse-workspace/shopizer/shopizer/sm-shop/SALESMANAGER.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.EOFException
+	at org.h2.store.fs.FileUtils.readFully(FileUtils.java:361)
+	at org.h2.store.FileStore.readFully(FileStore.java:282)
+	... 10 more
