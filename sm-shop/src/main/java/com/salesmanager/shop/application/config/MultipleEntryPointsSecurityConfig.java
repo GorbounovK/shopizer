@@ -129,6 +129,7 @@ public class MultipleEntryPointsSecurityConfig {
 					.antMatchers("/shop/customer/customLogon*").permitAll()
 					.antMatchers("/shop/customer/denied*").permitAll()
 					.antMatchers("/shop/customer/**").hasRole("AUTH_CUSTOMER")
+					.antMatchers("/robots.txt").permitAll()
 					.anyRequest().authenticated()
 					.and()
 					.httpBasic()
